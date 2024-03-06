@@ -35,10 +35,12 @@ async function fetchMovieDetails(movieId) {
 
 function displayMovie(movie) {
     const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-    const ukRelease = movie.release_dates.results.find(release => release.iso_3166_1 === 'UK');
+    const usRelease = movie.release_dates.results.find(release => release.iso_3166_1 === 'US');
+
 
     movieContainer.innerHTML = `
         <h3>${movie.title}</h3>
+        <img src="${imageUrl}" alt="${movie.title} poster" />
         <p>Release Date: ${movie.release_date}</p>
     `;
 }
