@@ -1,4 +1,4 @@
-const apiKey = 'ac7b3e63041ab5c8a88c66a482805cd8'; // Replace with your TMDb API key
+const apiKey = 'ac7b3e63041ab5c8a88c66a482805cd8';
 const movieContainer = document.getElementById('movie-container');
 const generateMovieBtn = document.getElementById('generate-movie-btn');
 
