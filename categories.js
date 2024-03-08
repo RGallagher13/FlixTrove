@@ -1,0 +1,122 @@
+var images = {
+    "1" : "action_movie_1.jpg",
+    "2" : "action_movie_2.jpg",
+    "3" : "action_movie_3.jpg",
+    "4" : "action_movie_4.jpg",
+    "5" : "action_movie_5.jpg",
+    "6" : "action_movie_6.jpg",
+    "7" : "action_movie_7.jpg",
+    "8" : "action_movie_8.jpg",
+    "9" : "action_movie_9.jpg",
+    "10" : "action_movie_10.jpg"
+};
+ 
+ // Appending images to the container
+Object.keys(images).forEach(function(movieId) {
+    var imagePath = images[movieId];
+    var imgElement = $("<img class='my_img' width='200' height='300' src='" + imagePath + "' data-movie-id='" + movieId + "'>");
+    $('#hold_images').append(imgElement);
+});
+
+
+// Function to add icon
+function add_icon(selector, iconClass, size, color) {
+    $(selector).append("<i class='" + iconClass + "' style='font-size: " + size + "; color: " + color + "'></i>");
+}
+
+// Appending left and right icons
+$('body').append("<i id='icon_right'></i>");
+$('body').append("<i id='icon_left'></i>");
+
+add_icon('#icon_right', 'fas fa-chevron-right', '40px', "#AA336A");
+add_icon('#icon_left', 'fas fa-chevron-left', '40px', "#AA336A");
+
+// Adding hover effect to images
+$(document).ready(function(){
+    $('.my_img').hover(function() {
+        $(this).addClass('transition');
+    }, function() {
+        $(this).removeClass('transition');
+    });
+});
+
+// Click event for scrolling
+$(document).on('click', '#icon_right, #icon_left', function() {
+    var scrollDistance = $(window).width() / 2; // Adjust scroll distance as needed
+    if ($(this).attr('id') == 'icon_right') {
+        $('html, body').animate({scrollLeft: '+=' + scrollDistance}, 800); // Scroll right
+    } else {
+        $('html, body').animate({scrollLeft: '-=' + scrollDistance}, 800); // Scroll left
+    }
+});
+
+// Modal code
+$(document).ready(function() {
+    var preferenceToRecord = null; // Variable to store the user's choice
+
+    // Handle click on movie images
+    $(document).on('click', '.my_img', function() {
+        var movieId = $(this).data('movie-id'); // Get movie ID from data attribute
+        $('#myModal').data('movie-id', movieId); // Store movie ID in modal
+        $('#myModal').css('display', 'block');
+    });
+
+// Function to handle recording user's choice 
+function record() {
+    console.log('Recording user choice:', preferenceToRecord); // Log the preference being recorded
+    if (preferenceToRecord !== null) {
+        var movieId = $('#myModal').data('movie-id'); // Get movie ID from modal
+        console.log('Recording for movie ID:', movieId); // Log the movie ID being recorded
+        localStorage.setItem(movieId, preferenceToRecord); // Store user's choice
+        preferenceToRecord = null; // Reset the preference flag
+    }
+}
+
+
+    // Handle thumbs up click
+    $('#thumbsUp').click(function(event) {
+        preferenceToRecord = 'thumbsUp'; // Set the preference flag
+        record(); 
+    });
+
+    // Handle thumbs down click
+    $('#thumbsDown').click(function(event) {
+        preferenceToRecord = 'thumbsDown'; // Set the preference flag
+        record(); 
+    });
+
+    // Handle close button click
+    $('.close').click(function() {
+        preferenceToRecord = null; // Reset preference flag to null before closing
+        $('#myModal').css('display', 'none'); // Close modal
+    });
+
+    // Close modal when clicking outside the modal
+    $('#myModal').click(function(event) {
+        if (event.target === this) {
+            preferenceToRecord = null; // Reset preference flag to null before closing
+            $('#myModal').css('display', 'none'); // Close modal
+        }
+    });
+});
+
+// Get stored preference for a specific movie
+Object.keys(images).forEach(function(movieId) {
+    var preference = localStorage.getItem(movieId); // Retrieve stored preference for the movie
+    if (preference !== null) {
+        // Preference exists, handle it accordingly
+        if (preference === 'thumbsUp') {
+            console.log('User is interested in watching the movie ' + movieId);
+            // Perform actions for thumbs up
+        } else if (preference === 'thumbsDown') {
+            console.log('User is not interested in watching the movie ' + movieId);
+            // Perform actions for thumbs down
+        } else if (preference === 'closed') {
+            console.log('User closed the modal for the movie ' + movieId);
+            // Perform actions for modal closed
+        }
+    } else {
+        // No preference recorded for the movie
+        console.log('User has not voted for the movie ' + movieId);
+    }
+});
