@@ -146,6 +146,10 @@ body {
   position: fixed; 
 }
 
+.space {
+  padding-top: 30px;
+}
+
 /* Style for circles */
 .circle {
   width: 50px;
@@ -158,12 +162,12 @@ body {
 
 #circle_left {
   left: 8px; /* Adjust position as needed */
-  top: 178px; /* Adjust position as needed */
+  top: 215px; /* Adjust position as needed */
 }
 
 #circle_right {
   right: 8px; /* Adjust position as needed */
-  top: 178px; /* Adjust position as needed */
+  top: 215px; /* Adjust position as needed */
 }
 
 .transition {
