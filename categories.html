@@ -29,7 +29,7 @@
       </div>
       </div> 
 
-    <header id="action_header">
+      <header id="action_header">
         <h1>Action</h1>
         <div id="hold_images"></div>
     </header>
@@ -41,11 +41,16 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Are you interested in watching this movie?</p>
-            <button id="thumbsUp">👍</button>
-            <button id="thumbsDown">👎</button>
+            <div class="icon-container">
+                <div class="background-square">
+                    <i id="thumbsUp" class="fa-solid fa-thumbs-up"></i>
+                </div>
+                <div class="background-square">
+                    <i id="thumbsDown" class="fa-solid fa-thumbs-down"></i>
+                </div>
+            </div>
         </div>
     </div>
-    
     <!-- Link your external JavaScript file -->
     <script src="categories.js"></script>
 
