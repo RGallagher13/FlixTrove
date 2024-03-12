@@ -8,13 +8,13 @@ body {
   
 .header {
   height:  55px;
+  width: auto;
   display: flex;
   justify-content: space-between;
   position: fixed;
   top: 0;
-  left: 0;
+  left:0 ;
   right: 0;
-  z-index: 100;
   background-color: black;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -123,8 +123,6 @@ transition: opacity 0.15s;
 .gen:active {
   opacity: 0.4;
 }
-
-
 
 
 * {
@@ -237,7 +235,7 @@ img:nth-of-type(4) {
 }
 
 .footer {
-    background-image: linear-gradient(to right, #000000, #333333);
+    background-image: linear-gradient(to right, #000000, #000000);
     padding: 2px 0;
     z-index: 100;
     position:fixed;
@@ -274,7 +272,7 @@ img:nth-of-type(4) {
   
   #contactButton,
   button[type="submit"] {
-    background-color: #ff9999;
+    background-color: rgb(255, 153, 153);
     color: #fff;
     border: none;
     padding: 10px 20px;
