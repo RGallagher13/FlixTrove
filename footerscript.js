@@ -40,4 +40,11 @@ document.getElementById("submitButton").addEventListener("click", function(event
     const mailtoURL = `mailto:unikalno_sme6no@abv.bg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
     console.log("Opening mail client"); 
     window.location.href = mailtoURL;
+    
+    // Clear form fields after submission
+ document.getElementById("fullName").value = "";
+ document.getElementById("email").value = "";
+ document.getElementById("phoneNumber").value = "";
+ document.getElementById("subject").value = "";
+ document.getElementById("message").value = "";
 });
