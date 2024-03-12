@@ -1,14 +1,14 @@
 var images = {
-    "1" : "action_movie_1.jpg",
-    "2" : "action_movie_2.jpg",
-    "3" : "action_movie_3.jpg",
-    "4" : "action_movie_4.jpg",
-    "5" : "action_movie_5.jpg",
-    "6" : "action_movie_6.jpg",
-    "7" : "action_movie_7.jpg",
-    "8" : "action_movie_8.jpg",
-    "9" : "action_movie_9.jpg",
-    "10" : "action_movie_10.jpg"
+    "1" : "https://m.media-amazon.com/images/M/MV5BOGFmZmNmNTQtOWVmMS00YzQwLWJjMjctYzM5MDk3YjVjNzA4XkEyXkFqcGdeQXVyNzA3ODUyNzY@._V1_FMjpg_UX1000_.jpg",
+    "2" : "https://m.media-amazon.com/images/M/MV5BMDQ0NjgyN2YtNWViNS00YjA3LTkxNDktYzFkZTExZGMxZDkxXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg",
+    "3" : "https://m.media-amazon.com/images/M/MV5BMjA4NDg3NzYxMF5BMl5BanBnXkFtZTcwNTgyNzkyNw@@._V1_FMjpg_UX1000_.jpg",
+    "4" : "https://m.media-amazon.com/images/M/MV5BMjI0NDI1MTMyM15BMl5BanBnXkFtZTcwMDMzMTcyNA@@._V1_FMjpg_UX1000_.jpg",
+    "5" : "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_FMjpg_UX1000_.jpg",
+    "6" : "https://m.media-amazon.com/images/M/MV5BNzQ3OTY4NjAtNzM5OS00N2ZhLWJlOWUtYzYwZjNmOWRiMzcyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
+    "7" : "https://m.media-amazon.com/images/M/MV5BMzU3YWYwNTQtZTdiMC00NjY5LTlmMTMtZDFlYTEyODBjMTk5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg",
+    "8" : "https://m.media-amazon.com/images/M/MV5BZDA0ODYzZGMtOGI3ZS00YTdjLTk0ZjEtYzA0Zjg3MDM4OTA4XkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_FMjpg_UX1000_.jpg",
+    "9" : "https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_FMjpg_UX1000_.jpg",
+    "10" : "https://m.media-amazon.com/images/M/MV5BYjhmNjMzNTktOWYzNS00NDA0LThhZmItNTBhOGNkNDk3MDc2XkEyXkFqcGdeQXVyNzU3Nzk4MDQ@._V1_FMjpg_UX1000_.jpg"
 };
  
  // Appending images to the container
@@ -28,8 +28,8 @@ function add_icon(selector, iconClass, size, color) {
 $('body').append("<i id='icon_right'></i>");
 $('body').append("<i id='icon_left'></i>");
 
-add_icon('#icon_right', 'fas fa-chevron-right', '40px', "#AA336A");
-add_icon('#icon_left', 'fas fa-chevron-left', '40px', "#AA336A");
+add_icon('#icon_right', 'fas fa-chevron-right', '40px', "black");
+add_icon('#icon_left', 'fas fa-chevron-left', '40px', "black");
 
 // Adding hover effect to images
 $(document).ready(function(){
@@ -61,6 +61,8 @@ $(document).ready(function() {
         $('#myModal').css('display', 'block');
     });
 
+
+
 // Function to handle recording user's choice 
 function record() {
     console.log('Recording user choice:', preferenceToRecord); // Log the preference being recorded
@@ -73,17 +75,17 @@ function record() {
 }
 
 
-    // Handle thumbs up click
-    $('#thumbsUp').click(function(event) {
-        preferenceToRecord = 'thumbsUp'; // Set the preference flag
-        record(); 
-    });
+// Handle thumbs up click
+$('#thumbsUp').click(function(event) {
+    preferenceToRecord = 'thumbsUp'; // Set the preference flag
+    record(); 
+});
 
-    // Handle thumbs down click
-    $('#thumbsDown').click(function(event) {
-        preferenceToRecord = 'thumbsDown'; // Set the preference flag
-        record(); 
-    });
+// Handle thumbs down click
+$('#thumbsDown').click(function(event) {
+    preferenceToRecord = 'thumbsDown'; // Set the preference flag
+    record(); 
+});
 
     // Handle close button click
     $('.close').click(function() {
@@ -120,3 +122,5 @@ Object.keys(images).forEach(function(movieId) {
         console.log('User has not voted for the movie ' + movieId);
     }
 });
+
+
