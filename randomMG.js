@@ -1,6 +1,6 @@
 const apiKey = 'ac7b3e63041ab5c8a88c66a482805cd8'; //Code which gives me access to the API
-const movieContainer = document.getElementById('movie-container');
-const generateMovieBtn = document.getElementById('generate-movie-btn');
+const movieContainer = document.getElementById('movie-container'); //Selects HTML element 
+const generateMovieBtn = document.getElementById('generate-movie-btn'); //Selects HTML element
 
 generateMovieBtn.addEventListener('click', fetchRandomMovie); //After button is clicked, next part of script runs
 
@@ -10,15 +10,15 @@ async function fetchRandomMovie() {
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&page=${randomPage}&certification_country=US&certification.lte=R&with_original_language=en`; //Where to fetch data from
 
     try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const movies = data.results;
-        const randomIndex = Math.floor(Math.random() * movies.length);
-        const randomMovie = movies[randomIndex];
-        const movieDetails = await fetchMovieDetails(randomMovie.id);
-        displayMovie(movieDetails);
+        const response = await fetch(url); //Sends a request to the url above
+        const data = await response.json(); 
+        const movies = data.results; //Extracts array of movies from the data delivered from the API
+        const randomIndex = Math.floor(Math.random() * movies.length); //Generates a random movie
+        const randomMovie = movies[randomIndex]; 
+        const movieDetails = await fetchMovieDetails(randomMovie.id); //Triggers function below to fetch additional details of the selected movie
+        displayMovie(movieDetails); //Triggers displayMovie function below
     } catch (error) {
-        console.error('Error fetching random movie:', error);
+        console.error('Error fetching random movie:', error); //Displays if an error happens and cannot fetch a movie
     }
 }
 
