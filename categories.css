@@ -236,6 +236,42 @@ img {
   color: white; 
 }
 
+/* CSS for the thumbs up and thumbs down icons */
+.fa-thumbs-up {
+  color: #ccc; /* Default color for thumbs up */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.fa-thumbs-down {
+  color: #ccc; /* Default color for thumbs down */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Color changes for thumbs up and thumbs down */
+.thumbs-up-color {
+  color: green !important; /* Green color for thumbs up */
+}
+
+.thumbs-down-color {
+  color: red !important; /* Red color for thumbs down */
+}
+
+/* Pulsating effect */
+.pulsate {
+  animation: pulsate 1s infinite;
+}
+
+@keyframes pulsate {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
 
 /* The Close Button */
 .close {

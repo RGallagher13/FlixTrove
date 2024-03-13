@@ -74,18 +74,44 @@ function record() {
     }
 }
 
-
 // Handle thumbs up click
 $('#thumbsUp').click(function(event) {
+    $('.fa-thumbs-up').removeClass('pulsate thumbs-down-color').addClass('thumbs-up-color'); // Apply thumbs up color and remove pulsating effect and thumbs down color
+    $('.fa-thumbs-down').removeClass('thumbs-up-color'); // Reset thumbs down color
     preferenceToRecord = 'thumbsUp'; // Set the preference flag
-    record(); 
+    record(); // Record preference
 });
+
 
 // Handle thumbs down click
 $('#thumbsDown').click(function(event) {
+    $('.fa-thumbs-down').removeClass('pulsate thumbs-up-color').addClass('thumbs-down-color'); // Apply thumbs down color and remove pulsating effect and thumbs up color
+    $('.fa-thumbs-up').removeClass('thumbs-down-color'); // Reset thumbs up color
     preferenceToRecord = 'thumbsDown'; // Set the preference flag
-    record(); 
+    record(); // Record preference
 });
+
+// Handle thumbs up hover
+$('#thumbsUp').hover(
+    function() {
+        $(this).addClass('pulsate');
+    },
+    function() {
+        $(this).removeClass('pulsate');
+    }
+);
+
+// Handle thumbs down hover
+$('#thumbsDown').hover(
+    function() {
+        $(this).addClass('pulsate');
+    },
+    function() {
+        $(this).removeClass('pulsate');
+    }
+);
+
+
 
     // Handle close button click
     $('.close').click(function() {
@@ -109,6 +135,28 @@ Object.keys(images).forEach(function(movieId) {
         // Preference exists, handle it accordingly
         if (preference === 'thumbsUp') {
             console.log('User is interested in watching the movie ' + movieId);
+            $('.fa-thumbs-up').addClass('thumbs-up-color'); // Apply thumbs up color
+        } else if (preference === 'thumbsDown') {
+            console.log('User is not interested in watching the movie ' + movieId);
+            $('.fa-thumbs-down').addClass('thumbs-down-color'); // Apply thumbs down color
+        } else if (preference === 'closed') {
+            console.log('User closed the modal for the movie ' + movieId);
+            // Perform actions for modal closed
+        }
+    } else {
+        // No preference recorded for the movie
+        console.log('User has not voted for the movie ' + movieId);
+    }
+});
+
+
+// Get stored preference for a specific movie
+/*Object.keys(images).forEach(function(movieId) {
+    var preference = localStorage.getItem(movieId); // Retrieve stored preference for the movie
+    if (preference !== null) {
+        // Preference exists, handle it accordingly
+        if (preference === 'thumbsUp') {
+            console.log('User is interested in watching the movie ' + movieId);
             // Perform actions for thumbs up
         } else if (preference === 'thumbsDown') {
             console.log('User is not interested in watching the movie ' + movieId);
@@ -121,6 +169,6 @@ Object.keys(images).forEach(function(movieId) {
         // No preference recorded for the movie
         console.log('User has not voted for the movie ' + movieId);
     }
-});
+});*/
 
 
